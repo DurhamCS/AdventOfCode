@@ -2,7 +2,7 @@ import math
 import itertools
 
 
-with open('day1.txt') as f:
+with open('inputs/day1.txt') as f:
     lines = list(int(val) for val in f.readlines())
 
 
