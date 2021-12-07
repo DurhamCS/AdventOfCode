@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include<algorithm>
+#include <numeric>
 
 using namespace std;
 typedef unsigned long long ull;
@@ -25,10 +26,7 @@ ull f(vector<int> fishes, int days){
         }
         copy(begin(counts_temp),end(counts_temp), begin(counts));
     }
-    ull sum = 0;
-    for(const auto &t: counts) sum += t;
-    return sum;
-
+    return accumulate(counts, counts + 9, 0, plus<ull>());
 }
 
 int main(){
@@ -39,4 +37,4 @@ int main(){
 
     cout << f(fishes, 80) << '\n';
     cout << f(fishes, 256) << '\n';
-}   
+}
