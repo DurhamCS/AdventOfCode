@@ -3,10 +3,7 @@
 #include <vector>
 #include <sstream>
 #include <unordered_map>
-#include <algorithm>
 #include <iomanip>
-
-inline size_t key(int i,int j) {return (size_t) i << 32 | (unsigned int) j;}
 
 long double count_fish(int days, int fish, std::unordered_map<int, long double> &memo) {
     //count children
