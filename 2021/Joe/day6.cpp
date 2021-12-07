@@ -7,19 +7,6 @@
 
 using namespace std;
 typedef unsigned long long ull;
-vector<int> split(string s, char delim)
-{
-    stringstream ss(s);
-    vector<int> result;
-    string substr;
-    while (1)
-    {
-        getline(ss, substr, delim);
-        if(substr == "") continue;
-        result.push_back(stoi(substr));
-        if(!ss.good()) return result;
-    }
-}
 
 ull f(vector<int> fishes, int days){
     ull counts[9] = {0};
@@ -46,9 +33,9 @@ ull f(vector<int> fishes, int days){
 
 int main(){
     ifstream input("day6input.txt");
-    string line;
-    getline(input, line);
-    vector<int> fishes = split(line, ',');
+    string t;
+    vector<int> fishes;
+    while (getline(input, t, ',')) fishes.push_back(stoi(t));
 
     cout << f(fishes, 80) << '\n';
     cout << f(fishes, 256) << '\n';
