@@ -15,18 +15,12 @@ ull f(vector<int> fishes, int days){
     for(const auto &fish: fishes) counts[fish] += 1;
 
     for(int d = 0; d<days; d++){
-        copy(begin(counts),end(counts), begin(counts_temp));
-        for(int t = 0; t<9; t++){
-            ull v = counts[t];
-            counts_temp[t] -= v;
-            if(t==0){
-                counts_temp[6] += v;
-                counts_temp[8] += v;
-            }else counts_temp[t - 1] += v;
-        }
-        copy(begin(counts_temp),end(counts_temp), begin(counts));
+        ull temp = counts[0];
+        for(int t = 0; t<8; t++) counts[t] = counts[t+1];
+        counts[6] += temp;
+        counts[8] = temp;
     }
-    return accumulate(counts, counts + 9, 0, plus<ull>());
+    return accumulate(counts, counts + 9, 0LL, plus<ull>());
 }
 
 int main(){
@@ -37,4 +31,4 @@ int main(){
 
     cout << f(fishes, 80) << '\n';
     cout << f(fishes, 256) << '\n';
-}
+}   
