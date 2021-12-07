@@ -25,7 +25,7 @@ int main(){
     ifstream input("day6input.txt");
     string t;
     vector<int> fishes;
-    while (getline(input, t, ',')) fishes.push_back(stoi(t));_
+    while (getline(input, t, ',')) fishes.push_back(stoi(t));
     cout << f(fishes, 80) << '\n';
     cout << f(fishes, 256) << '\n';
-}   
+}
