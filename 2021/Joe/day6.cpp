@@ -1,0 +1,55 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include<algorithm>
+
+using namespace std;
+typedef unsigned long long ull;
+vector<int> split(string s, char delim)
+{
+    stringstream ss(s);
+    vector<int> result;
+    string substr;
+    while (1)
+    {
+        getline(ss, substr, delim);
+        if(substr == "") continue;
+        result.push_back(stoi(substr));
+        if(!ss.good()) return result;
+    }
+}
+
+ull f(vector<int> fishes, int days){
+    ull counts[9] = {0};
+    ull counts_temp[9];
+    for(const auto &fish: fishes) counts[fish] += 1;
+
+    for(int d = 0; d<days; d++){
+        copy(begin(counts),end(counts), begin(counts_temp));
+        for(int t = 0; t<9; t++){
+            ull v = counts[t];
+            counts_temp[t] -= v;
+            if(t==0){
+                counts_temp[6] += v;
+                counts_temp[8] += v;
+            }else counts_temp[t - 1] += v;
+        }
+        copy(begin(counts_temp),end(counts_temp), begin(counts));
+    }
+    ull sum = 0;
+    for(const auto &t: counts) sum += t;
+    return sum;
+
+}
+
+int main(){
+    ifstream input("day6input.txt");
+    string line;
+    getline(input, line);
+    vector<int> fishes = split(line, ',');
+
+    cout << f(fishes, 80) << '\n';
+    cout << f(fishes, 256) << '\n';
+}   
