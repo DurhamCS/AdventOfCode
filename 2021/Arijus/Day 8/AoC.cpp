@@ -213,6 +213,6 @@ int main() {
         digits.clear();
         display.clear();
     }
-    std::cout <<ans1 <<std::endl;
-    std::cout <<ans2 <<std::endl;
+    std::cout <<"Star 1: " <<ans1 <<std::endl
+              <<"Star 2: " <<ans2 <<std::endl;
 }
