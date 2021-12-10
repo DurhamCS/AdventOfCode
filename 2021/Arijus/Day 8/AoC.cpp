@@ -137,11 +137,6 @@ int main() {
             => 4th position (from 0)
         */
 
-        numbers[0] = 1;
-        numbers[1] = 7;
-        numbers[2] = 4;
-        numbers[9] = 8;
-
         position[0] = digits[1] - digits[0];
 
         if (check(digits[9] - digits[8], digits[1])) {

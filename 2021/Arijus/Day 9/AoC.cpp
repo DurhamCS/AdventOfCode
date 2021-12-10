@@ -7,21 +7,14 @@
 int BasinSearch(std::vector<std::string> &map, int i, int j) {
     int ans = 1;
     map[i][j] = 'x';
-    if (map[i][j-1] != '9' && map[i][j-1] != 'x') {
-        ans += BasinSearch(map, i, j-1);
-    }        
-    if (map[i-1][j] != '9' && map[i-1][j] != 'x') {
-        ans += BasinSearch(map, i-1, j);
-    }
-        
-    if (map[i][j+1] != '9' && map[i][j+1] != 'x') {
+    if (map[i][j-1] != '9' && map[i][j-1] != 'x')
+        ans += BasinSearch(map, i, j-1);    
+    if (map[i-1][j] != '9' && map[i-1][j] != 'x')
+        ans += BasinSearch(map, i-1, j);        
+    if (map[i][j+1] != '9' && map[i][j+1] != 'x')
         ans += BasinSearch(map, i, j+1);
-    }
-        
-    if (map[i+1][j] != '9' && map[i+1][j] != 'x') {
+    if (map[i+1][j] != '9' && map[i+1][j] != 'x')
         ans += BasinSearch(map, i+1, j);
-    }
-        
     return ans;
 }
 
