@@ -162,5 +162,4 @@ int main()
         }
     }
     std::cout <<"Star 2: " <<bigDist[n-2][n-2] <<std::endl;
-
 }
